@@ -82,9 +82,18 @@ Quiero aprender mientras construimos, no solo obtener código.
   "Conceptos aprendidos" de este archivo.
 
 ## Estado del proyecto
-- Fase actual: Viernes 1 (sin empezar)
-- Completado: —
-- Pendiente / notas: —
+- Fase actual: Viernes 1 (completado)
+- Completado:
+  - Estructura del repo: `data/`, `scripts/`, `.gitignore`.
+  - `data/palabras.csv` con 40 palabras B1 (palabra, significado, oracion_ejemplo, emoji).
+  - `scripts/csv_a_json.py`: valida duplicados/campos vacíos y exporta `deck.json`.
+  - `deck.json` generado (40 tarjetas) y repo git inicializado con primer commit.
+- Pendiente / notas:
+  - Aún no se sube a GitHub (falta crear el repo remoto y hacer push).
+  - En esta PC, `python` no está en el PATH; usar `py` en su lugar (ej. `py scripts/csv_a_json.py`).
+  - Siguiente fase: Viernes 2 — PWA básica (tarjeta, voltear, botones) en GitHub Pages.
 
 ## Conceptos aprendidos
-- (vacío por ahora)
+- `csv.DictReader`: lee cada fila del CSV como diccionario usando el encabezado como claves; evita indexar columnas por número.
+- `dataclass` (`@dataclass`): forma concisa de definir una clase con campos tipados (aquí `Tarjeta`), similar a un `NamedTuple` pero mutable; `asdict()` la convierte a diccionario para volcarla a JSON.
+- `json.dump(..., ensure_ascii=False)`: sin esto, Python escaparía tildes/ñ/emoji como `\uXXXX` en el JSON; con `ensure_ascii=False` se escriben los caracteres reales (hay que guardar el archivo en UTF-8).
