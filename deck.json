@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "palabra": "achieve",
+    "significado": "lograr",
+    "oracion_ejemplo": "She worked hard to achieve her goals.",
+    "emoji": "🏆"
+  },
+  {
+    "id": 2,
+    "palabra": "apologize",
+    "significado": "disculparse",
+    "oracion_ejemplo": "He apologized for being late.",
+    "emoji": "🙏"
+  },
+  {
+    "id": 3,
+    "palabra": "appointment",
+    "significado": "cita",
+    "oracion_ejemplo": "I have a doctor's appointment tomorrow.",
+    "emoji": "📅"
+  },
+  {
+    "id": 4,
+    "palabra": "argue",
+    "significado": "discutir",
+    "oracion_ejemplo": "They often argue about money.",
+    "emoji": "😠"
+  },
+  {
+    "id": 5,
+    "palabra": "available",
+    "significado": "disponible",
+    "oracion_ejemplo": "Is this seat available?",
+    "emoji": "✅"
+  },
+  {
+    "id": 6,
+    "palabra": "borrow",
+    "significado": "tomar prestado",
+    "oracion_ejemplo": "Can I borrow your pen?",
+    "emoji": "🤝"
+  },
+  {
+    "id": 7,
+    "palabra": "brave",
+    "significado": "valiente",
+    "oracion_ejemplo": "The firefighter was very brave.",
+    "emoji": "🦸"
+  },
+  {
+    "id": 8,
+    "palabra": "breakdown",
+    "significado": "averia o colapso",
+    "oracion_ejemplo": "My car had a breakdown on the highway.",
+    "emoji": "🚗"
+  },
+  {
+    "id": 9,
+    "palabra": "budget",
+    "significado": "presupuesto",
+    "oracion_ejemplo": "We need to stick to our budget.",
+    "emoji": "💰"
+  },
+  {
+    "id": 10,
+    "palabra": "cancel",
+    "significado": "cancelar",
+    "oracion_ejemplo": "They had to cancel the trip.",
+    "emoji": "❌"
+  },
+  {
+    "id": 11,
+    "palabra": "career",
+    "significado": "carrera profesional",
+    "oracion_ejemplo": "She is building her career in marketing.",
+    "emoji": "💼"
+  },
+  {
+    "id": 12,
+    "palabra": "challenge",
+    "significado": "desafio",
+    "oracion_ejemplo": "Learning English is a big challenge for me.",
+    "emoji": "💪"
+  },
+  {
+    "id": 13,
+    "palabra": "complain",
+    "significado": "quejarse",
+    "oracion_ejemplo": "He complained about the noise.",
+    "emoji": "😤"
+  },
+  {
+    "id": 14,
+    "palabra": "confident",
+    "significado": "seguro de si mismo",
+    "oracion_ejemplo": "She feels confident about the interview.",
+    "emoji": "😎"
+  },
+  {
+    "id": 15,
+    "palabra": "convince",
+    "significado": "convencer",
+    "oracion_ejemplo": "I couldn't convince him to come.",
+    "emoji": "🗣️"
+  },
+  {
+    "id": 16,
+    "palabra": "crowded",
+    "significado": "lleno de gente",
+    "oracion_ejemplo": "The bus was very crowded.",
+    "emoji": "🚌"
+  },
+  {
+    "id": 17,
+    "palabra": "deadline",
+    "significado": "fecha limite",
+    "oracion_ejemplo": "The deadline for the project is Friday.",
+    "emoji": "⏰"
+  },
+  {
+    "id": 18,
+    "palabra": "decide",
+    "significado": "decidir",
+    "oracion_ejemplo": "We need to decide soon.",
+    "emoji": "🤔"
+  },
+  {
+    "id": 19,
+    "palabra": "delay",
+    "significado": "retraso",
+    "oracion_ejemplo": "The flight had a two-hour delay.",
+    "emoji": "✈️"
+  },
+  {
+    "id": 20,
+    "palabra": "embarrassed",
+    "significado": "avergonzado",
+    "oracion_ejemplo": "I felt embarrassed after the mistake.",
+    "emoji": "😳"
+  },
+  {
+    "id": 21,
+    "palabra": "encourage",
+    "significado": "animar o alentar",
+    "oracion_ejemplo": "My teacher encourages me to practice daily.",
+    "emoji": "📣"
+  },
+  {
+    "id": 22,
+    "palabra": "exhausted",
+    "significado": "agotado",
+    "oracion_ejemplo": "I'm exhausted after the long trip.",
+    "emoji": "😴"
+  },
+  {
+    "id": 23,
+    "palabra": "explain",
+    "significado": "explicar",
+    "oracion_ejemplo": "Can you explain this word to me?",
+    "emoji": "📖"
+  },
+  {
+    "id": 24,
+    "palabra": "generous",
+    "significado": "generoso",
+    "oracion_ejemplo": "He is very generous with his time.",
+    "emoji": "🎁"
+  },
+  {
+    "id": 25,
+    "palabra": "improve",
+    "significado": "mejorar",
+    "oracion_ejemplo": "I want to improve my vocabulary.",
+    "emoji": "📈"
+  },
+  {
+    "id": 26,
+    "palabra": "increase",
+    "significado": "aumentar",
+    "oracion_ejemplo": "Prices increased last month.",
+    "emoji": "📊"
+  },
+  {
+    "id": 27,
+    "palabra": "journey",
+    "significado": "viaje o trayecto",
+    "oracion_ejemplo": "It was a long journey home.",
+    "emoji": "🗺️"
+  },
+  {
+    "id": 28,
+    "palabra": "lazy",
+    "significado": "perezoso",
+    "oracion_ejemplo": "I feel lazy on Sundays.",
+    "emoji": "🛋️"
+  },
+  {
+    "id": 29,
+    "palabra": "mention",
+    "significado": "mencionar",
+    "oracion_ejemplo": "She mentioned your name yesterday.",
+    "emoji": "💬"
+  },
+  {
+    "id": 30,
+    "palabra": "nervous",
+    "significado": "nervioso",
+    "oracion_ejemplo": "I'm nervous about the exam.",
+    "emoji": "😰"
+  },
+  {
+    "id": 31,
+    "palabra": "opportunity",
+    "significado": "oportunidad",
+    "oracion_ejemplo": "This job is a great opportunity.",
+    "emoji": "🌟"
+  },
+  {
+    "id": 32,
+    "palabra": "organize",
+    "significado": "organizar",
+    "oracion_ejemplo": "We need to organize the files.",
+    "emoji": "🗂️"
+  },
+  {
+    "id": 33,
+    "palabra": "patient",
+    "significado": "paciente",
+    "oracion_ejemplo": "Be patient, the bus is coming.",
+    "emoji": "⏳"
+  },
+  {
+    "id": 34,
+    "palabra": "probably",
+    "significado": "probablemente",
+    "oracion_ejemplo": "It will probably rain tomorrow.",
+    "emoji": "🌧️"
+  },
+  {
+    "id": 35,
+    "palabra": "recommend",
+    "significado": "recomendar",
+    "oracion_ejemplo": "Can you recommend a good restaurant?",
+    "emoji": "👍"
+  },
+  {
+    "id": 36,
+    "palabra": "reliable",
+    "significado": "confiable",
+    "oracion_ejemplo": "He is a reliable friend.",
+    "emoji": "🤝"
+  },
+  {
+    "id": 37,
+    "palabra": "schedule",
+    "significado": "horario",
+    "oracion_ejemplo": "My schedule is full this week.",
+    "emoji": "🗓️"
+  },
+  {
+    "id": 38,
+    "palabra": "stressed",
+    "significado": "estresado",
+    "oracion_ejemplo": "I feel stressed before exams.",
+    "emoji": "😫"
+  },
+  {
+    "id": 39,
+    "palabra": "suggest",
+    "significado": "sugerir",
+    "oracion_ejemplo": "I suggest we leave early.",
+    "emoji": "💡"
+  },
+  {
+    "id": 40,
+    "palabra": "worth",
+    "significado": "vale la pena",
+    "oracion_ejemplo": "This book is worth reading.",
+    "emoji": "⭐"
+  }
+]

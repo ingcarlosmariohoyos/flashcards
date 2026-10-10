@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# Entornos virtuales (si más adelante usas uno)
+.venv/
+venv/
+
+# Archivos temporales del sistema/editor
+.DS_Store
+Thumbs.db
