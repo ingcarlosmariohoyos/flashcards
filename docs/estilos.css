@@ -1,0 +1,221 @@
+/*
+  estilos.css
+  -----------
+  Diseño de la app, pensado para el iPhone y para usarse con una mano:
+  tarjeta grande arriba y botones grandes abajo, donde llega el pulgar.
+
+  Cómo leer CSS:  selector { propiedad: valor; }
+    - .algo   -> elementos con class="algo"
+    - #algo   -> el elemento con id="algo"
+*/
+
+/* ===== Variables de color (se reutilizan con var(--nombre)) ===== */
+:root {
+  --fondo: #f4f4f8;
+  --tarjeta: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --azul: #4f46e5;
+  --verde: #16a34a;
+  --amarillo: #d97706;
+  --rojo: #dc2626;
+  --sombra: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Modo oscuro: si el iPhone está en modo oscuro, se cambian solo las variables. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #111118;
+    --tarjeta: #1e1e2a;
+    --texto: #f3f4f6;
+    --texto-suave: #9ca3af;
+    --sombra: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box; /* el ancho incluye el padding: más fácil de calcular */
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  /* -apple-system = la fuente del iPhone (San Francisco). */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* Respeta el notch y la barra inferior del iPhone (safe-area). */
+  padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+  /* Evita el zoom por doble toque y el resaltado gris al tocar. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Columna vertical que ocupa toda la pantalla. */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; /* ocupa todo el espacio que deja el encabezado */
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Encabezado ===== */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.encabezado h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+#contador {
+  color: var(--texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== Vista de repaso ===== */
+#vista-repaso {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 16px;
+}
+
+/* ===== Tarjeta con efecto de volteo 3D ===== */
+.tarjeta {
+  flex: 1;              /* crece para llenar el espacio disponible */
+  min-height: 300px;
+  position: relative;
+  cursor: pointer;
+  perspective: 1000px;  /* da profundidad al giro 3D */
+}
+
+.cara {
+  position: absolute;   /* las dos caras se apilan una encima de la otra */
+  inset: 0;
+  background: var(--tarjeta);
+  border-radius: 24px;
+  box-shadow: var(--sombra);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  backface-visibility: hidden;          /* oculta la cara que queda "de espaldas" */
+  -webkit-backface-visibility: hidden;  /* lo mismo, para Safari */
+  transition: transform 0.4s ease;      /* el giro dura 0.4 segundos */
+}
+
+/* La cara de atrás empieza girada 180° (de espaldas). */
+.atras {
+  transform: rotateY(180deg);
+}
+
+/* Cuando app.js agrega la clase "volteada", se invierten los giros. */
+.tarjeta.volteada .frente { transform: rotateY(-180deg); }
+.tarjeta.volteada .atras  { transform: rotateY(0deg); }
+
+.emoji {
+  font-size: 5rem;
+  line-height: 1;
+}
+
+.palabra {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.pista {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.significado {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.ejemplo {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--texto-suave);
+  line-height: 1.4;
+}
+
+/* ===== Botones ===== */
+.botones {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas del mismo ancho */
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 16px;
+  min-height: 64px;      /* grande para el pulgar */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  font-family: inherit;
+  transition: transform 0.1s, opacity 0.2s;
+}
+
+.btn:active {
+  transform: scale(0.96); /* pequeño "hundimiento" al tocar */
+}
+
+.btn:disabled {
+  opacity: 0.35;
+}
+
+.btn-verde    { background: var(--verde); }
+.btn-amarillo { background: var(--amarillo); }
+.btn-rojo     { background: var(--rojo); }
+.btn-azul     { background: var(--azul); width: 100%; }
+
+/* ===== Vista de fin de sesión ===== */
+#vista-fin {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.resumen {
+  width: 100%;
+  background: var(--tarjeta);
+  border-radius: 24px;
+  box-shadow: var(--sombra);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.resumen ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  font-size: 1.2rem;
+  line-height: 2;
+}
+
+/* El atributo hidden debe ganar siempre, aunque el elemento tenga display: flex. */
+[hidden] {
+  display: none !important;
+}
+
+.error {
+  color: var(--rojo);
+  text-align: center;
+}

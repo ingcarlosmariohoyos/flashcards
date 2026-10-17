@@ -1,8 +1,8 @@
 """
 csv_a_json.py
 -------------
-Lee data/palabras.csv, valida su contenido y exporta deck.json en la raíz
-del proyecto. deck.json es el archivo que más adelante leerá la PWA en el
+Lee data/palabras.csv, valida su contenido y exporta docs/deck.json (la
+carpeta que publica GitHub Pages). deck.json es el archivo que leerá la PWA en el
 iPhone, así que su formato debe quedar estable.
 
 Validaciones:
@@ -11,7 +11,7 @@ Validaciones:
   - El CSV debe tener exactamente las columnas esperadas.
 
 Uso:
-    python scripts/csv_a_json.py
+    py scripts/csv_a_json.py
 """
 
 from __future__ import annotations
@@ -25,7 +25,7 @@ from pathlib import Path
 # Rutas relativas a la raíz del proyecto (independiente de dónde se ejecute).
 RAIZ = Path(__file__).resolve().parent.parent
 CSV_ENTRADA = RAIZ / "data" / "palabras.csv"
-JSON_SALIDA = RAIZ / "deck.json"
+JSON_SALIDA = RAIZ / "docs" / "deck.json"  # docs/ = carpeta publicada en GitHub Pages
 
 COLUMNAS_ESPERADAS = ["palabra", "significado", "oracion_ejemplo", "emoji"]
 

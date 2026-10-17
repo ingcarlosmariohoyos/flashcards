@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  index.html
+  ----------
+  Estructura de la app: la "plantilla" con los elementos que se ven en pantalla.
+  - El diseño (colores, tamaños) está en estilos.css.
+  - El comportamiento (cargar tarjetas, voltear, calificar) está en app.js.
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- Hace que la página use el ancho real del teléfono (sin "zoom" de escritorio).
+       viewport-fit=cover permite usar toda la pantalla del iPhone (incluida la zona del notch). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Flashcards</title>
+
+  <!-- PWA: archivo que describe la app (nombre, ícono, colores) para "instalarla". -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- iPhone: ícono en la pantalla de inicio y abrir a pantalla completa (sin barra de Safari). -->
+  <link rel="apple-touch-icon" href="icono.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Flashcards">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#4f46e5">
+
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- Encabezado: contador de progreso de la sesión (ej. "3 / 40"). -->
+  <header class="encabezado">
+    <h1>Flashcards</h1>
+    <span id="contador">Cargando…</span>
+  </header>
+
+  <main>
+    <!-- ===== Vista de repaso ===== -->
+    <section id="vista-repaso">
+      <!-- La tarjeta tiene dos caras. app.js le agrega/quita la clase "volteada"
+           y el CSS la gira 180° para mostrar la cara de atrás. -->
+      <div id="tarjeta" class="tarjeta" role="button" tabindex="0"
+           aria-label="Tarjeta: toca para voltear">
+        <div class="cara frente">
+          <div id="emoji" class="emoji"></div>
+          <div id="palabra" class="palabra"></div>
+          <div class="pista">Toca para voltear</div>
+        </div>
+        <div class="cara atras">
+          <div id="significado" class="significado"></div>
+          <div id="ejemplo" class="ejemplo"></div>
+        </div>
+      </div>
+
+      <!-- Botones de calificación: deshabilitados hasta que voltees la tarjeta. -->
+      <div class="botones">
+        <button id="btn-no-sabia" class="btn btn-rojo" data-calificacion="no_sabia" disabled>No la sabía</button>
+        <button id="btn-dificil" class="btn btn-amarillo" data-calificacion="dificil" disabled>Difícil</button>
+        <button id="btn-facil" class="btn btn-verde" data-calificacion="facil" disabled>Fácil</button>
+      </div>
+    </section>
+
+    <!-- ===== Vista de fin de sesión (oculta al inicio con el atributo "hidden") ===== -->
+    <section id="vista-fin" hidden>
+      <div class="resumen">
+        <div class="emoji">🎉</div>
+        <h2>¡Sesión terminada!</h2>
+        <ul>
+          <li>✅ Fácil: <strong id="total-facil">0</strong></li>
+          <li>🤔 Difícil: <strong id="total-dificil">0</strong></li>
+          <li>❌ No la sabía: <strong id="total-no-sabia">0</strong></li>
+        </ul>
+        <button id="btn-reiniciar" class="btn btn-azul">Repasar de nuevo</button>
+      </div>
+    </section>
+
+    <!-- Mensaje de error (ej. si no se pudo cargar deck.json). -->
+    <p id="error" class="error" hidden></p>
+  </main>
+
+  <!-- El script va al final para que, cuando se ejecute, los elementos de arriba ya existan. -->
+  <script src="app.js"></script>
+</body>
+</html>
