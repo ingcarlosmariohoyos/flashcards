@@ -82,7 +82,7 @@ Quiero aprender mientras construimos, no solo obtener código.
   "Conceptos aprendidos" de este archivo.
 
 ## Estado del proyecto
-- Fase actual: Viernes 2 (completado; falta confirmar en el iPhone)
+- Fase actual: Viernes 2 (completado y probado en el iPhone)
 - Completado:
   - Viernes 1: `data/palabras.csv` (40 palabras), `scripts/csv_a_json.py`, repo en GitHub
     (`ingcarlosmariohoyos/flashcards`).
@@ -92,7 +92,7 @@ Quiero aprender mientras construimos, no solo obtener código.
   - `csv_a_json.py` ahora exporta a `docs/deck.json`.
   - `scripts/generar_icono.py` (Pillow) y `requirements.txt`.
 - Pendiente / notas:
-  - Activar GitHub Pages: Settings → Pages → rama `main`, carpeta `/docs`.
+  - App publicada en https://ingcarlosmariohoyos.github.io/flashcards/ (Pages: rama `main`, carpeta `/docs`) y agregada a la pantalla de inicio.
   - En esta PC, `python` no está en el PATH; usar `py` (ej. `py scripts/csv_a_json.py`).
   - Prueba local: `cd docs; py -m http.server 8000` → http://localhost:8000
   - Las calificaciones aún NO se guardan (solo cuentan en la sesión).
