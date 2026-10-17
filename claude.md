@@ -101,6 +101,7 @@ Quiero aprender mientras construimos, no solo obtener código.
 ## Conceptos aprendidos
 - `csv.DictReader`: lee cada fila del CSV como diccionario usando el encabezado como claves; evita indexar columnas por número.
 - `dataclass` (`@dataclass`): forma concisa de definir una clase con campos tipados (aquí `Tarjeta`), similar a un `NamedTuple` pero mutable; `asdict()` la convierte a diccionario para volcarla a JSON.
-- `json.dump(..., ensure_ascii=False)`: sin esto, Python escaparía tildes/ñ/emoji como `\uXXXX` en el JSON; con `ensure_ascii=False` se escriben los caracteres reales (hay que guardar el archivo en UTF-8).- DOM y eventos: el HTML se convierte en un árbol de objetos (DOM) que JS modifica (`textContent`, `classList`, `hidden`); `addEventListener("click", fn)` registra una función que se ejecuta cuando ocurre el evento, parecido a un callback.
+- `json.dump(..., ensure_ascii=False)`: sin esto, Python escaparía tildes/ñ/emoji como `\uXXXX` en el JSON; con `ensure_ascii=False` se escriben los caracteres reales (hay que guardar el archivo en UTF-8).
+- DOM y eventos: el HTML se convierte en un árbol de objetos (DOM) que JS modifica (`textContent`, `classList`, `hidden`); `addEventListener("click", fn)` registra una función que se ejecuta cuando ocurre el evento, parecido a un callback.
 - `fetch` + `async/await`: descarga archivos de forma asíncrona, como `asyncio`. No funciona abriendo el HTML con doble clic (`file://`) por seguridad del navegador; por eso se prueba con `py -m http.server`.
 - PWA en iPhone: `manifest.json` + metas `apple-*` + `apple-touch-icon` hacen que "Agregar a inicio" abra la web a pantalla completa con su propio ícono, sin App Store.
