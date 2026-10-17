@@ -82,18 +82,25 @@ Quiero aprender mientras construimos, no solo obtener código.
   "Conceptos aprendidos" de este archivo.
 
 ## Estado del proyecto
-- Fase actual: Viernes 1 (completado)
+- Fase actual: Viernes 2 (completado; falta confirmar en el iPhone)
 - Completado:
-  - Estructura del repo: `data/`, `scripts/`, `.gitignore`.
-  - `data/palabras.csv` con 40 palabras B1 (palabra, significado, oracion_ejemplo, emoji).
-  - `scripts/csv_a_json.py`: valida duplicados/campos vacíos y exporta `deck.json`.
-  - `deck.json` generado (40 tarjetas) y repo git inicializado con primer commit.
+  - Viernes 1: `data/palabras.csv` (40 palabras), `scripts/csv_a_json.py`, repo en GitHub
+    (`ingcarlosmariohoyos/flashcards`).
+  - Viernes 2: PWA básica en `docs/` (carpeta publicada en GitHub Pages):
+    `index.html`, `estilos.css`, `app.js` (baraja, voltea, califica, resumen final),
+    `manifest.json` e `icono.png`.
+  - `csv_a_json.py` ahora exporta a `docs/deck.json`.
+  - `scripts/generar_icono.py` (Pillow) y `requirements.txt`.
 - Pendiente / notas:
-  - Aún no se sube a GitHub (falta crear el repo remoto y hacer push).
-  - En esta PC, `python` no está en el PATH; usar `py` en su lugar (ej. `py scripts/csv_a_json.py`).
-  - Siguiente fase: Viernes 2 — PWA básica (tarjeta, voltear, botones) en GitHub Pages.
+  - Activar GitHub Pages: Settings → Pages → rama `main`, carpeta `/docs`.
+  - En esta PC, `python` no está en el PATH; usar `py` (ej. `py scripts/csv_a_json.py`).
+  - Prueba local: `cd docs; py -m http.server 8000` → http://localhost:8000
+  - Las calificaciones aún NO se guardan (solo cuentan en la sesión).
+  - Siguiente fase: Viernes 3 — service worker (offline) + Leitner con progreso guardado.
 
 ## Conceptos aprendidos
 - `csv.DictReader`: lee cada fila del CSV como diccionario usando el encabezado como claves; evita indexar columnas por número.
 - `dataclass` (`@dataclass`): forma concisa de definir una clase con campos tipados (aquí `Tarjeta`), similar a un `NamedTuple` pero mutable; `asdict()` la convierte a diccionario para volcarla a JSON.
-- `json.dump(..., ensure_ascii=False)`: sin esto, Python escaparía tildes/ñ/emoji como `\uXXXX` en el JSON; con `ensure_ascii=False` se escriben los caracteres reales (hay que guardar el archivo en UTF-8).
+- `json.dump(..., ensure_ascii=False)`: sin esto, Python escaparía tildes/ñ/emoji como `\uXXXX` en el JSON; con `ensure_ascii=False` se escriben los caracteres reales (hay que guardar el archivo en UTF-8).- DOM y eventos: el HTML se convierte en un árbol de objetos (DOM) que JS modifica (`textContent`, `classList`, `hidden`); `addEventListener("click", fn)` registra una función que se ejecuta cuando ocurre el evento, parecido a un callback.
+- `fetch` + `async/await`: descarga archivos de forma asíncrona, como `asyncio`. No funciona abriendo el HTML con doble clic (`file://`) por seguridad del navegador; por eso se prueba con `py -m http.server`.
+- PWA en iPhone: `manifest.json` + metas `apple-*` + `apple-touch-icon` hacen que "Agregar a inicio" abra la web a pantalla completa con su propio ícono, sin App Store.
