@@ -25,6 +25,7 @@ import {
   tarjetasDeHoy,
   registrarRespuesta,
   validarProgreso,
+  revisarTamanoRespaldo,
 } from "./logica.js";
 
 // Nombre con el que se guarda el progreso en el teléfono.
@@ -232,6 +233,7 @@ async function importarRespaldo() {
   if (!archivo) return; // cancelaste el selector
 
   try {
+    revisarTamanoRespaldo(archivo.size); // archivo.size = tamaño en bytes, sin leerlo todavía
     const datos = validarProgreso(JSON.parse(await archivo.text()));
     const cantidad = Object.keys(datos.tarjetas).length;
     // confirm muestra un diálogo "Aceptar / Cancelar" y devuelve true o false.

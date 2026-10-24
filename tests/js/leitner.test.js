@@ -20,6 +20,8 @@ import {
   tarjetasDeHoy,
   registrarRespuesta,
   validarProgreso,
+  revisarTamanoRespaldo,
+  TAMANO_MAXIMO_RESPALDO,
   NUEVAS_POR_DIA,
 } from "../../docs/logica.js";
 
@@ -223,5 +225,25 @@ describe("validarProgreso", () => {
   test("si falta nuevasHoy o es inválido, usa el valor por defecto", () => {
     const resultado = validarProgreso({ version: 1, tarjetas: {}, nuevasHoy: "mal" });
     assert.deepEqual(resultado.nuevasHoy, { fecha: "", cantidad: 0 });
+  });
+
+  test("nuevasHoy con una fecha mal escrita usa el valor por defecto", () => {
+    const resultado = validarProgreso({
+      version: 1,
+      tarjetas: {},
+      nuevasHoy: { fecha: "ayer", cantidad: 3 },
+    });
+    assert.deepEqual(resultado.nuevasHoy, { fecha: "", cantidad: 0 });
+  });
+});
+
+describe("revisarTamanoRespaldo", () => {
+  test("acepta archivos de hasta 1 MB", () => {
+    revisarTamanoRespaldo(500); // no debe lanzar error
+    revisarTamanoRespaldo(TAMANO_MAXIMO_RESPALDO);
+  });
+
+  test("rechaza archivos de más de 1 MB", () => {
+    assert.throws(() => revisarTamanoRespaldo(TAMANO_MAXIMO_RESPALDO + 1), /demasiado grande/);
   });
 });

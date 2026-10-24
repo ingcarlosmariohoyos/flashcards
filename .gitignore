@@ -12,3 +12,6 @@ Thumbs.db
 
 # Caché de pytest
 .pytest_cache/
+
+# Claves y secretos (ej. API key de Pixabay): NUNCA se suben al repo
+.env

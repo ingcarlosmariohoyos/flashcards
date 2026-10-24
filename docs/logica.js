@@ -213,6 +213,19 @@ export function registrarRespuesta(progreso, tarjeta, calificacion, hoy) {
 
 const FORMATO_FECHA = /^\d{4}-\d{2}-\d{2}$/; // expresión regular, como re.compile(...) en Python
 
+/** Tamaño máximo de un respaldo: 1 MB alcanza para ~14.000 palabras. */
+export const TAMANO_MAXIMO_RESPALDO = 1_000_000; // "_" separa miles, igual que en Python
+
+/**
+ * Rechaza archivos demasiado grandes ANTES de leerlos: un archivo enorme (por error
+ * o malicioso) congelaría la app al convertirlo con JSON.parse.
+ */
+export function revisarTamanoRespaldo(bytes) {
+  if (bytes > TAMANO_MAXIMO_RESPALDO) {
+    throw new Error("el archivo es demasiado grande para ser un respaldo (máximo 1 MB)");
+  }
+}
+
 /** ¿Es un objeto "normal" (diccionario), y no null ni una lista? */
 function esObjeto(valor) {
   return valor !== null && typeof valor === "object" && !Array.isArray(valor);
@@ -259,6 +272,7 @@ export function validarProgreso(datos) {
   const nuevasHoyValido =
     esObjeto(n) &&
     typeof n.fecha === "string" &&
+    FORMATO_FECHA.test(n.fecha) &&
     Number.isInteger(n.cantidad) &&
     n.cantidad >= 0;
 
