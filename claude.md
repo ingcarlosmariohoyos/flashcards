@@ -63,6 +63,10 @@ HTML/CSS/JS. Mi nivel de inglés es B1 y quiero mejorar mi vocabulario conversac
 - Antes de crear o modificar archivos, explícame brevemente el plan.
 - Escribe código completo y comentado, en español.
 - Incluye los pasos exactos para probar cada fase en mi PC y en mi iPhone.
+- Cada vez que implementes algo, escribe sus pruebas unitarias y ejecútalas antes de
+  darlo por terminado: Python con pytest en `tests/python/` (`py -m pytest`), y la lógica
+  de la app en `docs/logica.js` (funciones puras, sin DOM) con Node en `tests/js/`
+  (`node --test "tests/js/*.test.js"`).
 - Si una decisión técnica tiene alternativas, recomiéndame una y dime por qué.
 - Sé eficiente: no explores ni leas archivos que no sean necesarios.
 - Al terminar cada sesión, actualiza la sección "Estado del proyecto" de este archivo.

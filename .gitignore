@@ -9,3 +9,6 @@ venv/
 # Archivos temporales del sistema/editor
 .DS_Store
 Thumbs.db
+
+# Caché de pytest
+.pytest_cache/

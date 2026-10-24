@@ -11,8 +11,12 @@
   Todavía NO se guarda progreso: eso llega el Viernes 3 (Leitner + almacenamiento).
 */
 
-// "use strict" hace que JS marque como error algunos descuidos (ej. variables sin declarar).
-"use strict";
+// Este archivo es un módulo (ver <script type="module"> en index.html):
+// los módulos ya trabajan en "modo estricto", que marca como error algunos
+// descuidos (ej. variables sin declarar).
+
+// Importa las funciones puras desde logica.js (como "from logica import ..." en Python).
+import { barajar, validarMazo } from "./logica.js";
 
 // ===== Referencias a elementos del HTML =====
 // document.getElementById busca en la página el elemento con ese id.
@@ -38,46 +42,7 @@ let totales = { facil: 0, dificil: 0, no_sabia: 0 };
 
 // ===== Utilidades =====
 
-/** Devuelve una copia barajada de la lista (algoritmo Fisher-Yates, como random.shuffle). */
-function barajar(lista) {
-  const copia = [...lista]; // [...lista] = copia superficial, como lista[:] en Python
-  for (let i = copia.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copia[i], copia[j]] = [copia[j], copia[i]]; // intercambio, como a, b = b, a
-  }
-  return copia;
-}
-
-/**
- * Revisa que deck.json tenga el formato esperado y devuelve solo las tarjetas válidas.
- * Es como validar un esquema en Python (ej. con pydantic) antes de usar los datos.
- * Lanza un error si el archivo no sirve en absoluto.
- */
-function validarMazo(datos) {
-  if (!Array.isArray(datos)) {
-    throw new Error("deck.json no contiene una lista de tarjetas");
-  }
-
-  const CAMPOS = ["palabra", "significado", "oracion_ejemplo", "emoji"];
-
-  // filter = como una list comprehension con "if": se queda con las tarjetas que cumplen.
-  const validas = datos.filter(
-    (t) =>
-      t !== null &&
-      typeof t === "object" &&
-      // every = como all() de Python: todos los campos deben ser texto no vacío.
-      CAMPOS.every((campo) => typeof t[campo] === "string" && t[campo].trim() !== "")
-  );
-
-  if (validas.length < datos.length) {
-    // console.warn escribe en la consola del navegador (F12), como logging.warning.
-    console.warn(`Se ignoraron ${datos.length - validas.length} tarjeta(s) mal formadas.`);
-  }
-  if (validas.length === 0) {
-    throw new Error("deck.json no tiene tarjetas válidas");
-  }
-  return validas;
-}
+// barajar() y validarMazo() viven en logica.js (para poder probarlas).
 
 /** Habilita o deshabilita los tres botones de calificación. */
 function habilitarBotones(habilitar) {

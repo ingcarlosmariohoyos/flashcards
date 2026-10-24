@@ -1,0 +1,9 @@
+{
+  "name": "flashcards",
+  "private": true,
+  "type": "module",
+  "description": "Le indica a Node que los .js usan import/export (módulos). Solo se usa para las pruebas.",
+  "scripts": {
+    "test": "node --test tests/js/*.test.js"
+  }
+}

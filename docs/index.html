@@ -88,7 +88,8 @@
     <p id="error" class="error" hidden></p>
   </main>
 
-  <!-- El script va al final para que, cuando se ejecute, los elementos de arriba ya existan. -->
-  <script src="app.js"></script>
+  <!-- type="module" permite usar import/export (app.js importa funciones de logica.js).
+       Los módulos esperan a que el HTML esté cargado, así que los elementos de arriba ya existen. -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
