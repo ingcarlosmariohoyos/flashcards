@@ -86,21 +86,32 @@ Quiero aprender mientras construimos, no solo obtener código.
   "Conceptos aprendidos" de este archivo.
 
 ## Estado del proyecto
-- Fase actual: Viernes 2 (completado y probado en el iPhone)
+- Fase actual: Viernes 3 (implementado; falta confirmar la prueba en el iPhone)
 - Completado:
   - Viernes 1: `data/palabras.csv` (40 palabras), `scripts/csv_a_json.py`, repo en GitHub
     (`ingcarlosmariohoyos/flashcards`).
   - Viernes 2: PWA básica en `docs/` (carpeta publicada en GitHub Pages):
-    `index.html`, `estilos.css`, `app.js` (baraja, voltea, califica, resumen final),
-    `manifest.json` e `icono.png`.
-  - `csv_a_json.py` ahora exporta a `docs/deck.json`.
-  - `scripts/generar_icono.py` (Pillow) y `requirements.txt`.
+    `index.html`, `estilos.css`, `app.js`, `manifest.json` e `icono.png`.
+    `scripts/generar_icono.py` (Pillow) y `requirements.txt`.
+  - Viernes 3:
+    - `docs/sw.js`: service worker (app offline; archivos con stale-while-revalidate,
+      `deck.json` con network-first y límite de 3 s). Subir `VERSION` si la app queda pegada.
+    - `docs/logica.js`: funciones puras (barajar, validarMazo, fechas, Leitner 5 cajas
+      1-2-4-8-16 días, máximo 10 nuevas/día, validarProgreso, revisarTamanoRespaldo).
+    - `docs/app.js`: solo pantalla; progreso en localStorage (`flashcards.progreso`),
+      clave por palabra en minúsculas (no por id); respaldo exportar/importar en la vista final.
+    - Correcciones: sin scroll (100dvh), sin menú al mantener pulsado, CSP en `index.html`.
+    - Pruebas unitarias: `tests/python/` (pytest) y `tests/js/` (node:test). 51 pruebas.
+    - `desinstalar-app.md`: cómo quitar la app del iPhone.
 - Pendiente / notas:
-  - App publicada en https://ingcarlosmariohoyos.github.io/flashcards/ (Pages: rama `main`, carpeta `/docs`) y agregada a la pantalla de inicio.
+  - App publicada en https://ingcarlosmariohoyos.github.io/flashcards/ (Pages: rama `main`, carpeta `/docs`).
   - En esta PC, `python` no está en el PATH; usar `py` (ej. `py scripts/csv_a_json.py`).
   - Prueba local: `cd docs; py -m http.server 8000` → http://localhost:8000
-  - Las calificaciones aún NO se guardan (solo cuentan en la sesión).
-  - Siguiente fase: Viernes 3 — service worker (offline) + Leitner con progreso guardado.
+    (en F12 → Application → Service workers, activar "Update on reload" al desarrollar).
+  - Pruebas: `py -m pytest` y `node --test "tests/js/*.test.js"`.
+  - Confirmar en el iPhone: modo avión, progreso guardado y exportar respaldo.
+  - Siguiente fase: Viernes 4 — pronunciación (Web Speech API), estadísticas (racha,
+    aprendidas, pendientes) e imágenes con Pixabay (clave en `.env`, ya ignorado por git).
 
 ## Conceptos aprendidos
 - `csv.DictReader`: lee cada fila del CSV como diccionario usando el encabezado como claves; evita indexar columnas por número.
@@ -109,3 +120,6 @@ Quiero aprender mientras construimos, no solo obtener código.
 - DOM y eventos: el HTML se convierte en un árbol de objetos (DOM) que JS modifica (`textContent`, `classList`, `hidden`); `addEventListener("click", fn)` registra una función que se ejecuta cuando ocurre el evento, parecido a un callback.
 - `fetch` + `async/await`: descarga archivos de forma asíncrona, como `asyncio`. No funciona abriendo el HTML con doble clic (`file://`) por seguridad del navegador; por eso se prueba con `py -m http.server`.
 - PWA en iPhone: `manifest.json` + metas `apple-*` + `apple-touch-icon` hacen que "Agregar a inicio" abra la web a pantalla completa con su propio ícono, sin App Store.
+- Service worker: script que el navegador instala aparte de la página e intercepta cada petición (`fetch`); con la Cache API guarda copias para funcionar offline. Es como una capa de caché delante de una API, con una política por tipo de archivo.
+- localStorage: diccionario del navegador que solo guarda texto y sobrevive al cerrar la app; se usa con `JSON.stringify`/`JSON.parse` (≈ `json.dumps`/`json.loads`).
+- Módulos JS (`export`/`import`) y funciones puras: separar la lógica (`logica.js`) de la pantalla (`app.js`) permite probarla con `node:test`, el equivalente de pytest en Node.
