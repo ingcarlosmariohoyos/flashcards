@@ -14,6 +14,14 @@
        viewport-fit=cover permite usar toda la pantalla del iPhone (incluida la zona del notch). -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+  <!-- Seguridad (CSP = Content Security Policy): lista blanca de lo que el navegador
+       puede cargar o ejecutar. 'self' = solo archivos de este mismo sitio.
+       Si alguien lograra inyectar un <script> o un enlace a otro servidor, el
+       navegador lo bloquearía. Si más adelante agregamos algo externo, hay que
+       permitirlo aquí (si no, el navegador lo bloquea y avisa en la consola, F12). -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+
   <title>Flashcards</title>
 
   <!-- PWA: archivo que describe la app (nombre, ícono, colores) para "instalarla". -->

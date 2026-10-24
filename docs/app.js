@@ -48,6 +48,37 @@ function barajar(lista) {
   return copia;
 }
 
+/**
+ * Revisa que deck.json tenga el formato esperado y devuelve solo las tarjetas válidas.
+ * Es como validar un esquema en Python (ej. con pydantic) antes de usar los datos.
+ * Lanza un error si el archivo no sirve en absoluto.
+ */
+function validarMazo(datos) {
+  if (!Array.isArray(datos)) {
+    throw new Error("deck.json no contiene una lista de tarjetas");
+  }
+
+  const CAMPOS = ["palabra", "significado", "oracion_ejemplo", "emoji"];
+
+  // filter = como una list comprehension con "if": se queda con las tarjetas que cumplen.
+  const validas = datos.filter(
+    (t) =>
+      t !== null &&
+      typeof t === "object" &&
+      // every = como all() de Python: todos los campos deben ser texto no vacío.
+      CAMPOS.every((campo) => typeof t[campo] === "string" && t[campo].trim() !== "")
+  );
+
+  if (validas.length < datos.length) {
+    // console.warn escribe en la consola del navegador (F12), como logging.warning.
+    console.warn(`Se ignoraron ${datos.length - validas.length} tarjeta(s) mal formadas.`);
+  }
+  if (validas.length === 0) {
+    throw new Error("deck.json no tiene tarjetas válidas");
+  }
+  return validas;
+}
+
 /** Habilita o deshabilita los tres botones de calificación. */
 function habilitarBotones(habilitar) {
   botonesCalificar.forEach((boton) => {
@@ -120,7 +151,8 @@ async function cargarMazo() {
     // cache: "no-cache" = pregunta siempre al servidor si hay una versión nueva.
     const respuesta = await fetch("deck.json", { cache: "no-cache" });
     if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
-    mazo = await respuesta.json(); // convierte el texto JSON en una lista de objetos
+    const datos = await respuesta.json(); // convierte el texto JSON en una lista de objetos
+    mazo = validarMazo(datos);            // solo usamos tarjetas con el formato correcto
     iniciarSesion();
   } catch (err) {
     elContador.textContent = "";
