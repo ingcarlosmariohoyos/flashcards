@@ -74,13 +74,23 @@
     <section id="vista-fin" hidden>
       <div class="resumen">
         <div class="emoji">🎉</div>
-        <h2>¡Sesión terminada!</h2>
-        <ul>
+        <!-- El título cambia: "¡Sesión terminada!" o "¡Estás al día!" (si no había nada que repasar). -->
+        <h2 id="titulo-fin">¡Sesión terminada!</h2>
+        <ul id="lista-totales">
           <li>✅ Fácil: <strong id="total-facil">0</strong></li>
           <li>🤔 Difícil: <strong id="total-dificil">0</strong></li>
           <li>❌ No la sabía: <strong id="total-no-sabia">0</strong></li>
         </ul>
-        <button id="btn-reiniciar" class="btn btn-azul">Repasar de nuevo</button>
+        <!-- Ej. "Mañana te esperan 12 tarjetas." -->
+        <p id="mensaje-fin" class="mensaje-fin"></p>
+
+        <!-- Respaldo del progreso: guardarlo en un archivo JSON o recuperarlo. -->
+        <div class="respaldo">
+          <button id="btn-exportar" class="btn btn-secundario">💾 Exportar respaldo</button>
+          <button id="btn-importar" class="btn btn-secundario">📂 Importar respaldo</button>
+        </div>
+        <!-- Selector de archivos oculto: el botón "Importar" lo abre por código. -->
+        <input id="input-respaldo" type="file" accept="application/json,.json" hidden>
       </div>
     </section>
 

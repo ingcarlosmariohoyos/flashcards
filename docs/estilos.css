@@ -195,7 +195,13 @@ main {
 .btn-verde    { background: var(--verde); }
 .btn-amarillo { background: var(--amarillo); }
 .btn-rojo     { background: var(--rojo); }
-.btn-azul     { background: var(--azul); width: 100%; }
+/* Botón secundario: solo borde, para acciones menos frecuentes (respaldo). */
+.btn-secundario {
+  background: transparent;
+  color: var(--azul);
+  border: 2px solid var(--azul);
+  font-size: 0.95rem;
+}
 
 /* ===== Vista de fin de sesión ===== */
 #vista-fin {
@@ -219,6 +225,18 @@ main {
   margin: 0 0 24px;
   font-size: 1.2rem;
   line-height: 2;
+}
+
+.mensaje-fin {
+  color: var(--texto-suave);
+  margin: 0 0 20px;
+}
+
+/* Dos botones de respaldo lado a lado. */
+.respaldo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
 
 /* ===== Pantallas bajas (ej. iPhone SE): textos un poco más pequeños ===== */
