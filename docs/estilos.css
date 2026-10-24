@@ -40,7 +40,10 @@
 
 html, body {
   margin: 0;
-  height: 100%;
+  height: 100%;   /* respaldo para navegadores viejos */
+  height: 100dvh; /* dvh = altura VISIBLE real de la pantalla (en iPhone, 100% puede ser más alto) */
+  overflow: hidden;           /* la app ocupa exactamente una pantalla: sin scroll */
+  overscroll-behavior: none;  /* evita el "rebote" al arrastrar la página en Safari */
 }
 
 body {
@@ -60,6 +63,9 @@ body {
 
 main {
   flex: 1; /* ocupa todo el espacio que deja el encabezado */
+  /* En flexbox, un hijo por defecto NO se encoge por debajo de su contenido
+     (min-height: auto). Con 0 le permitimos ajustarse al espacio disponible. */
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
@@ -85,6 +91,7 @@ main {
 /* ===== Vista de repaso ===== */
 #vista-repaso {
   flex: 1;
+  min-height: 0; /* igual que en main: permite encogerse */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -93,8 +100,8 @@ main {
 
 /* ===== Tarjeta con efecto de volteo 3D ===== */
 .tarjeta {
-  flex: 1;              /* crece para llenar el espacio disponible */
-  min-height: 300px;
+  flex: 1;              /* crece (o se encoge) para llenar el espacio disponible */
+  min-height: 0;        /* antes 300px: eso empujaba los botones fuera de la pantalla */
   position: relative;
   cursor: pointer;
   perspective: 1000px;  /* da profundidad al giro 3D */
@@ -208,6 +215,16 @@ main {
   margin: 0 0 24px;
   font-size: 1.2rem;
   line-height: 2;
+}
+
+/* ===== Pantallas bajas (ej. iPhone SE): textos un poco más pequeños ===== */
+/* @media aplica estas reglas SOLO si la condición se cumple, como un "if" del CSS. */
+@media (max-height: 700px) {
+  .emoji       { font-size: 3.5rem; }
+  .palabra     { font-size: 2rem; }
+  .significado { font-size: 1.6rem; }
+  .ejemplo     { font-size: 1.05rem; }
+  .cara        { padding: 16px; gap: 10px; }
 }
 
 /* El atributo hidden debe ganar siempre, aunque el elemento tenga display: flex. */
