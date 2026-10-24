@@ -56,6 +56,10 @@ body {
   /* Evita el zoom por doble toque y el resaltado gris al tocar. */
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  /* Al dejar pulsado: no seleccionar texto ni mostrar el menú "Copiar / Buscar". */
+  -webkit-user-select: none;   /* Safari */
+  user-select: none;           /* estándar */
+  -webkit-touch-callout: none; /* oculta el menú emergente del iPhone */
   /* Columna vertical que ocupa toda la pantalla. */
   display: flex;
   flex-direction: column;
